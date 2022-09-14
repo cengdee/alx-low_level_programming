@@ -1,32 +1,36 @@
-#include "alx.h"
+#include "main.h"
+
+
 
 /**
 
- * main - Entry point
+ * main - print putchar
 
- *
-
- * Return: Always 0 (Success)
+ * Return: always 0
 
  */
+
+
 
 int main(void)
 
 {
 
-	char *sh = "Alx";
+	_putchar('_');
 
+	_putchar('p');
 
+	_putchar('u');
 
-	while (*sh)
+	_putchar('t');
 
-	{
+	_putchar('c');
 
-		_putchar(*sh);
+	_putchar('h');
 
-		sh++;
+	_putchar('a');
 
-	}
+	_putchar('r');
 
 	_putchar('\n');
 
@@ -34,4 +38,7 @@ int main(void)
 
 	return (0);
 
+
+
 }
+
