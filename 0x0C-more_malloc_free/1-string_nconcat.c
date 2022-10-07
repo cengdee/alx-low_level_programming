@@ -2,32 +2,48 @@
 #include <stdlib.h>
 
 /**
- * _calloc - Allocates memory for an array of a certain number
- *           of elements each of an inputted byte size.
- * @nmemb: The number of elements.
- * @size: The byte size of each array element.
+ * string_nconcat - concatenates two strings.
+ * @s1: first string.
+ * @s2: second string.
+ * @n: amount of bytes.
  *
- * Return: If nmemb = 0, size = 0, or the function fails - NULL.
- *         Otherwise - a pointer to the allocated memory.
+ * Return: pointer to the allocated memory.
+ * if malloc fails, status value is equal to 98.
  */
-void *_calloc(unsigned int nmemb, unsigned int size)
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	void *mem;
-	char *filler;
-	unsigned int index;
-
-	if (nmemb == 0 || size == 0)
+	char *sout;
+	unsigned int ls1, ls2, lsout, i;
+	
+	if (s1 == NULL)
+		s1 = "";
+	
+	if (s2 == NULL)
+		s2 = "";
+	
+	for (ls1 = 0; s1[ls1] != '\0'; ls1++)
+		;
+	
+	for (ls2 = 0; s2[ls2] != '\0'; ls2++)
+		;
+	
+	if (n > ls2)
+		n = ls2;
+	
+	lsout = ls1 + n;
+	
+	sout = malloc(lsout + 1);
+	
+	if (sout == NULL)
 		return (NULL);
-
-	mem = malloc(size * nmemb);
-
-	if (mem == NULL)
-		return (NULL);
-
-	filler = mem;
-
-	for (index = 0; index < (size * nmemb); index++)
-		filler[index] = '\0';
-
-	return (mem);
+	
+	for (i = 0; i < lsout; i++)
+		if (i < ls1)
+			sout[i] = s1[i];
+		else
+			sout[i] = s2[i - ls1];
+	
+	sout[i] = '\0';
+	
+	return (sout);
 }
